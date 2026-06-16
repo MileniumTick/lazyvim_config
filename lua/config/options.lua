@@ -44,9 +44,10 @@ opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = 2
 opt.timeoutlen = 300
+opt.swapfile = false
 opt.undofile = true
 opt.updatetime = 200
 opt.wrap = false
 
-vim.g.autoformat = true
+vim.g.autoformat = false
 vim.o.winborder = "rounded"

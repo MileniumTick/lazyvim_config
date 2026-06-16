@@ -77,6 +77,24 @@ return {
   },
 
   {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      opts.linters = opts.linters or {}
+      opts.linters.shellcheck = vim.tbl_deep_extend("force", opts.linters.shellcheck or {}, {
+        condition = function(ctx)
+          local filename = vim.fs.basename(ctx.filename)
+          return not (
+            filename == ".env"
+            or filename:match("^%.env%.")
+            or filename:match("%.env$")
+            or filename:match("%.env%.")
+          )
+        end,
+      })
+    end,
+  },
+
+  {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       opts.formatters_by_ft = opts.formatters_by_ft or {}
